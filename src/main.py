@@ -1,12 +1,35 @@
 # Resolve the problem!!
 import string
+import random
 
 SYMBOLS = list('!"#$%&\'()*+,-./:;?@[]^_`{|}~')
 
+def randomNum(i, j):
+    return random.randint(i, j)
+
+def swGet(passwordGn):
+    selection = randomNum (1, 4)
+    if selection == 1:
+        passwordGn = passwordGn + chr(random.randint(48, 57))
+    elif selection == 2:
+        passwordGn = passwordGn + chr(random.randint(65, 90))
+    elif selection == 3:
+        passwordGn = passwordGn + chr(random.randint(97, 122))
+    elif selection == 4:
+        passwordGn = passwordGn + SYMBOLS[randomNum(0, len(SYMBOLS) - 1)]
+    return passwordGn
+    # ,random.randint(48, 57))
 
 def generate_password():
-    # Start coding here
-
+    randomNumber = randomNum(8, 16)
+    validation = False
+    while validation == False:
+        passwordGn = ''
+        for i in range (0, randomNumber):
+            passwordGn = swGet(passwordGn)
+        if validate(passwordGn):
+            validation = validate(passwordGn)
+    return passwordGn
 
 def validate(password):
 
@@ -39,7 +62,6 @@ def validate(password):
         if has_symbols and has_numbers and has_lowercase_letters and has_uppercase_letters:
             return True
     return False
-
 
 def run():
     password = generate_password()
