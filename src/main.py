@@ -1,15 +1,30 @@
 # Resolve the problem!!
 import string
+import random
 
 SYMBOLS = list('!"#$%&\'()*+,-./:;?@[]^_`{|}~')
+abcLower = list('abcdefghijklmnopqrstwxyz')
+abcUpper = list('ABCDEFGHIJKLMNOPQRSTWXYZ1234567890')
+NUMBERS = list('1234567890')
 
 
 def generate_password():
-    # Start coding here
+    contraseña = ""
+    for i in range(4):
+        contraseña += random.choice(abcLower)
+    
+    for i in range(4):
+        contraseña += random.choice(abcUpper)
 
+    for i in range(4):
+        contraseña += random.choice(SYMBOLS)
+
+    for i in range(4):
+        contraseña += random.choice(NUMBERS)
+    
+    return contraseña
 
 def validate(password):
-
     if len(password) >= 8 and len(password) <= 16:
         has_lowercase_letters = False
         has_numbers = False
