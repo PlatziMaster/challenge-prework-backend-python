@@ -1,10 +1,26 @@
 # Resolve the problem!!
 import string
+import random as rd
+
 
 SYMBOLS = list('!"#$%&\'()*+,-./:;?@[]^_`{|}~')
-
+LETTERS_CAPS = string.ascii_uppercase #Generates all the ascii uppercase letters
+LETTERS = string.ascii_lowercase #Generates all the ascii lowercase letters
+NUMBERS = list('0123456789') 
+LISTS_NAMES = [NUMBERS, LETTERS_CAPS, LETTERS, SYMBOLS]
 
 def generate_password():
+    chars_qty = rd.randint(8, 16) #gets a random number between 8 and 16. This number will be password lenght
+    psswd = "" #Empty string initilized
+    list_selector = 0 #changes the list from where the character will be taken to ensure that password contains elements from all lists
+    for _ in range(chars_qty): #iterates the number of times chars_qty indicates
+        char = rd.choice(LISTS_NAMES[list_selector]) #gets a random char from the list that the index indicates
+        psswd += char #add the new char to the password
+        list_selector +=1 #sum 1 to list selector so next time gets the randomchar from another list
+        if list_selector == 4: #reset list_selector
+            list_selector = 0 
+    
+    return psswd
     # Start coding here
 
 
@@ -42,11 +58,15 @@ def validate(password):
 
 
 def run():
+
+    
     password = generate_password()
     if validate(password):
         print('Secure Password')
     else:
         print('Insecure Password')
+        
+    
 
 
 if __name__ == '__main__':
