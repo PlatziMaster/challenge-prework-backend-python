@@ -1,12 +1,20 @@
 # Resolve the problem!!
 import string
+import random
 
 SYMBOLS = list('!"#$%&\'()*+,-./:;?@[]^_`{|}~')
 
-
 def generate_password():
-    # Start coding here
-
+    password = []
+    pass_len = random.randint(8,16)
+    pass_len = int(pass_len / 4)
+    for _ in range(0, pass_len):
+        password.append(random.choice(SYMBOLS))
+        password.append(random.choice(string.ascii_uppercase))
+        password.append(random.choice(string.ascii_lowercase))
+        password.append(random.choice(string.digits))
+    return password
+        
 
 def validate(password):
 
@@ -45,8 +53,12 @@ def run():
     password = generate_password()
     if validate(password):
         print('Secure Password')
+        print(password)
+        print(len(password))
     else:
         print('Insecure Password')
+        print(password)
+        print(len(password))
 
 
 if __name__ == '__main__':
