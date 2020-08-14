@@ -53,13 +53,9 @@ def run():
     password = generate_password()
     if validate(password):
         print('Secure Password')
-        print(password)
-        print(len(password))
     else:
         print('Insecure Password')
-        print(password)
-        print(len(password))
-
+        
 
 if __name__ == '__main__':
     run()
