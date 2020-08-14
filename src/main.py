@@ -2,8 +2,6 @@
 import string
 import random
 
-SYMBOLS = list('!"#$%&\'()*+,-./:;?@[]^_`{|}~')
-
 
 def random_chars(elemnts, len_min, len_max):
     return random.choices(elemnts, k=random.randint(len_min, len_max))
@@ -26,37 +24,22 @@ def generate_password():
     return ''.join(password)
 
 
-def validate(password):
-
-    if len(password) >= 8 and len(password) <= 16:
-        has_lowercase_letters = False
-        has_numbers = False
-        has_uppercase_letters = False
-        has_symbols = False
-
-        for char in password:
-            if char in string.ascii_lowercase:
-                has_lowercase_letters = True
-                break
-
-        for char in password:
-            if char in string.ascii_uppercase:
-                has_uppercase_letters = True
-                break
-
-        for char in password:
-            if char in string.digits:
-                has_numbers = True
-                break
-
-        for char in password:
-            if char in SYMBOLS:
-                has_symbols = True
-                break
-
-        if has_symbols and has_numbers and has_lowercase_letters and has_uppercase_letters:
+def validate_chars(chars_set, word):
+    for char in word:
+        if char in chars_set:
             return True
-    return False
+
+
+def validate(password):
+    if len(password) >= 8 and len(password) <= 16:
+
+        has_lowercase = validate_chars(string.ascii_lowercase, password)
+        has_uppercase = validate_chars(string.ascii_uppercase, password)
+        has_numbers = validate_chars(string.digits, password)
+        has_symbols = validate_chars(string.punctuation, password)
+
+        if has_symbols and has_numbers and has_lowercase and has_uppercase:
+            return password
 
 
 def run():
