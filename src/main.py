@@ -6,6 +6,13 @@ SYMBOLS = list('!"#$%&\'()*+,-./:;?@[]^_`{|}~')
 
 def generate_password():
     # Start coding here
+    import random
+    from random import choice
+    longitud = random.randint(8, 16)
+    valores = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@#%&+"
+    password = ""
+    password = password.join([choice(valores) for i in range(longitud)])
+    return password
 
 
 def validate(password):
