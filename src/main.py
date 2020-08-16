@@ -4,22 +4,28 @@ import random
 
 SYMBOLS = list('!"#$%&\'()*+,-./:;?@[]^_`{|}~')
 
-OPCIONES = [SYMBOLS,lambda:random.randint(65,90),lambda:random.randint(0,9)]
+OPCIONES = [SYMBOLS,list(range(65,90)),list(range(0,10))]
 resultados = [0,0]
 
 def generate_password():
     contrasena = ''
-    while (len(contrasena) < 16):
-        choiced = random.choice(OPCIONES)
-        if callable(choiced):
-            character = choiced()
-            if(character>64):
-                contrasena += chr(character if random.choice(range(0,9))<7 else character + 32)
-            else:
-                contrasena += f'${character}'
-            
-        else:
-            contrasena += random.choice(choiced)
+    size = random.randint(8,16)
+    batch = int(size/4)
+    for opcion in OPCIONES:
+        sample = random.sample(opcion,batch)
+        for  element in sample:
+            try:
+                if element >= 65:
+                    contrasena += chr(element if random.randint(0,1) else element + 32)
+                else:
+                    contrasena += f"{element}"
+            except:
+                contrasena += element
+    if(len(contrasena)<size):
+        sample = random.sample(OPCIONES[1],size-len(contrasena))
+        for element in sample:
+            contrasena += chr(element + 32)
+    print(contrasena)
     return contrasena
 
 
