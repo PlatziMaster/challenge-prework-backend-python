@@ -1,11 +1,24 @@
 # Resolve the problem!!
 import string
+import random
+import secrets
 
 SYMBOLS = list('!"#$%&\'()*+,-./:;?@[]^_`{|}~')
 
 
 def generate_password():
     # Start coding here
+    len_password = random.randint(8, 16)
+    tem_password = ''.join(secrets.choice(
+        ''.join(str(elem) for elem in SYMBOLS)
+        + string.ascii_uppercase
+        + string.digits
+        + string.ascii_lowercase
+    ) for _ in range(len_password))
+
+    if validate(tem_password):
+        return tem_password
+    return generate_password()
 
 
 def validate(password):
