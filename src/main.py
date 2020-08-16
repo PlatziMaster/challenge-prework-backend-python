@@ -5,7 +5,7 @@ import random
 UPLETTERS = list('ABCDEFGHIJKLMNÑOPQRSTUVWXYZ')
 LOWLETTERS = list('abcdefghijklmnñopqrstuvwxyz')
 NUMBERS = list('1234567890')
-SYMBOLS = list('!"#$%&\()*+,-./:;?@[]^_`{|}~')
+SYMBOLS = list('!"#$%&\'()*+,-./:;?@[]^_`{|}~')
 
 
 def generate_password():
