@@ -1,11 +1,26 @@
 # Resolve the problem!!
 import string
+import random
 
 SYMBOLS = list('!"#$%&\'()*+,-./:;?@[]^_`{|}~')
 
+OPCIONES = [SYMBOLS,lambda:random.randint(65,90),lambda:random.randint(0,9)]
+resultados = [0,0]
 
 def generate_password():
-    # Start coding here
+    contrasena = ''
+    while (len(contrasena) < 16):
+        choiced = random.choice(OPCIONES)
+        if callable(choiced):
+            character = choiced()
+            if(character>64):
+                contrasena += chr(character if random.choice(range(0,9))<7 else character + 32)
+            else:
+                contrasena += f'${character}'
+            
+        else:
+            contrasena += random.choice(choiced)
+    return contrasena
 
 
 def validate(password):
@@ -44,10 +59,14 @@ def validate(password):
 def run():
     password = generate_password()
     if validate(password):
-        print('Secure Password')
+        #print('Secure Password')
+        resultados[0] += 1
     else:
-        print('Insecure Password')
+        #print('Insecure Password')
+        resultados[1] += 1
 
 
 if __name__ == '__main__':
-    run()
+    for intento in range(10000):
+        run()
+    print(f'secure: {resultados[0]} insecure: {resultados[1]}')
