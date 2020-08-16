@@ -1,4 +1,3 @@
-# Resolve the problem!!
 import string
 import random # Here we call the random library in order to use the randon.choice method
 
@@ -56,7 +55,7 @@ def validate(password):
 def run():
     
     password = generate_password()
-    print(password) # Just a print statement only to see if our program runs smoothley 
+    print(password) # Just a print statement to see if our program runs smoothley 
     if validate(password):
         print('Secure Password')
     else:
