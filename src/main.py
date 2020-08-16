@@ -1,12 +1,24 @@
 # Resolve the problem!!
 import string
+import random # Here we call the random library in order to use the randon.choice method
 
-SYMBOLS = list('!"#$%&\'()*+,-./:;?@[]^_`{|}~')
+MAY = list('ABCDEGHIJKLMNOPQRSTUVWXYZ')
+MIN = list('abcdefghijklmnopqrstuvwxyz')
+NUMBERS = list('1234567890')
+SYMBOLS = list('!"#$%&\'()*+,-./:;?@[]^_`{|}~') # Here we have the list of avaible characters for building a secure password
 
 
 def generate_password():
-    # Start coding here
+    
+    character = MAY + MIN + NUMBERS + SYMBOLS # Here we define a variable which contains the previous lists from which random.choice will be able to choose from
+    keygen = [] # Here we have an open list, which we will use to feel the password
 
+    for i in range(12): # We predefined a password with a char length of 12. This loop help us to build the secure password. 
+        random_character = random.choice(character) # The random.choice sets a random character on each iteration on our keygen list.
+        keygen.append(random_character) # We use the .append method to fill our keygen list with the choosen character from teh random.choice method
+
+    keygen = "".join(keygen) # We use the .join method to turn the keygen list into a clean string
+    return keygen # Here we return a clean password
 
 def validate(password):
 
@@ -42,7 +54,9 @@ def validate(password):
 
 
 def run():
+    
     password = generate_password()
+    print(password) # Just a print statement only to see if our program runs smoothley 
     if validate(password):
         print('Secure Password')
     else:
