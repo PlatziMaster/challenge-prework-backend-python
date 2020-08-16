@@ -1,12 +1,33 @@
 # Resolve the problem!!
 import string
+import random
 
-SYMBOLS = list('!"#$%&\'()*+,-./:;?@[]^_`{|}~')
+UPLETTERS = list('ABCDEFGHIJKLMNÑOPQRSTUVWXYZ')
+LOWLETTERS = list('abcdefghijklmnñopqrstuvwxyz')
+NUMBERS = list('1234567890')
+SYMBOLS = list('!"#$%&\()*+,-./:;?@[]^_`{|}~')
 
 
 def generate_password():
-    # Start coding here
+    longer = random.randint(8, 16)
+    password = []
 
+    values = list(UPLETTERS + LOWLETTERS + NUMBERS + SYMBOLS)
+    test_validation = False
+
+    while test_validation == False:
+        for _ in range(longer):
+            password.append(random.choice(values))
+        
+            contraseña = ''.join(password)
+        
+        test_validation = validate(contraseña)
+
+        if test_validation == False:
+            password = []
+
+    return contraseña
+        
 
 def validate(password):
 
