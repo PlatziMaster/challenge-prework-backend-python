@@ -4,7 +4,7 @@ import random
 
 SYMBOLS = list('!"#$%&\'()*+,-./:;?@[]^_`{|}~')
 
-OPCIONES = [SYMBOLS,list(range(65,90)),list(range(0,10))]
+OPCIONES = [SYMBOLS,list(range(65,90)),list(range(97,122)),list(range(0,10))]
 resultados = [0,0]
 
 def generate_password():
@@ -16,7 +16,7 @@ def generate_password():
         for  element in sample:
             try:
                 if element >= 65:
-                    contrasena += chr(element if random.randint(0,1) else element + 32)
+                    contrasena += chr(element)
                 else:
                     contrasena += f"{element}"
             except:
@@ -25,7 +25,11 @@ def generate_password():
         sample = random.sample(OPCIONES[1],size-len(contrasena))
         for element in sample:
             contrasena += chr(element + 32)
-    print(contrasena)
+    carcteres = list(contrasena)
+    random.shuffle(carcteres)
+
+    contrasena = ''.join(carcteres)
+    print(f'size: {size} \tpass: {contrasena}')
     return contrasena
 
 
