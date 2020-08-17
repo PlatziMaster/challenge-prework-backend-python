@@ -53,7 +53,6 @@ def validate(password):
 
 def run():
     password = generate_password()
-    print(password)
     if validate(password):
         print('Secure Password')
     else:
