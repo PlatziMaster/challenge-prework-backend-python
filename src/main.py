@@ -1,15 +1,24 @@
 # Resolve the problem!!
 import string
+import random
+import string
+import os
 
 SYMBOLS = list('!"#$%&\'()*+,-./:;?@[]^_`{|}~')
 
 
 def generate_password():
     # Start coding here
+    # password = ''.join(random.choice(string.ascii_uppercase + string.digits +
+    #                                  "".join(SYMBOLS) + string.ascii_lowercase)
+    #                                    for x in range(15))
+    chars = string.ascii_letters + string.digits + "".join(SYMBOLS) + string.ascii_lowercase + string.ascii_uppercase
+    random.seed = (os.urandom(1024))
+    password = ''.join(random.choice(chars) for i in range(16))
+    return password
 
 
 def validate(password):
-
     if len(password) >= 8 and len(password) <= 16:
         has_lowercase_letters = False
         has_numbers = False
