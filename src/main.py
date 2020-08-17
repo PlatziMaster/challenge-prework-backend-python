@@ -11,18 +11,10 @@ def generate_password():
     # Start coding here
     # password = ''.join(random.choice(string.ascii_uppercase + string.digits +
     #                                  "".join(SYMBOLS) + string.ascii_lowercase)
-<<<<<<< HEAD
     #                                    for x in range(15))
     chars = string.ascii_letters + string.digits + "".join(SYMBOLS) + string.ascii_lowercase + string.ascii_uppercase
     random.seed = (os.urandom(1024))
     password = ''.join(random.choice(chars) for i in range(16))
-=======
-    #                                  for x in range(15))
-    length = 16
-    chars = string.ascii_letters + string.digits + "".join(SYMBOLS) + string.ascii_lowercase + string.ascii_uppercase
-    random.seed = (os.urandom(1024))
-    password = ''.join(random.choice(chars) for i in range(length))
->>>>>>> 47dc0262307fc449b1bf3a25bfb22abfd491b1cb
     return password
 
 
