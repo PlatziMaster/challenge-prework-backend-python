@@ -2,6 +2,12 @@
 
 Genera una contraseña segura
 
+## SOLUCION
+ 
+- La solucion incluye todos los metodos necesario para que se genere la contraseña
+- Se genero un archivo de pruebas para comprobar que siempre se genera un contraseña correcta
+- Se agregaron returns al metodo run() por motivos de prueba
+
 ### RETO
 
 En el archivo **main.py** completa la función `generate_password`. La misma debe retornar una contraseña segura y contener letras minúsculas y mayúsculas, números y símbolos. Debe tener entre 8 y 16 caracteres. Por último corre el script, y si obtienes el output "Secure Password" completaste el reto!
