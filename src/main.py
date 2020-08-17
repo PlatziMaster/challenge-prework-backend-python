@@ -24,7 +24,7 @@ def generate_password():
 
 def validate(password):
 
-      if len(password) >= 8 and len(password) <= 16:
+    if len(password) >= 8 and len(password) <= 16:
         has_lowercase_letters = False
         has_numbers = False
         has_uppercase_letters = False
@@ -52,7 +52,7 @@ def validate(password):
 
         if has_symbols and has_numbers and has_lowercase_letters and has_uppercase_letters:
             return True
-        return False
+    return False
 
 
 def run():
