@@ -1,12 +1,26 @@
 # Resolve the problem!!
 import string
+import random
 
 SYMBOLS = list('!"#$%&\'()*+,-./:;?@[]^_`{|}~')
 
 
 def generate_password():
-    # Start coding here
+    upperCase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+    lowerCase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    symbolsList = ['!', '"', '#', '$', '%', '&', '/', '(', ')', '=', '?', '¡', '¿', '@', '-', '_', '*', '+', '{', '}', '[', ']', '^', '`', '~', ',', ';', ':', '.']
+    numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
 
+    characters = upperCase + lowerCase + symbolsList + numbers
+
+    password = []
+
+    for i in range(16):
+        character_random = random.choice(characters)
+        password.append(character_random)
+
+    password = "".join(password)
+    return password
 
 def validate(password):
 
