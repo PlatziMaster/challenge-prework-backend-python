@@ -14,7 +14,11 @@ def generate_password():
     #                                    for x in range(15))
     chars = string.ascii_letters + string.digits + "".join(SYMBOLS) + string.ascii_lowercase + string.ascii_uppercase
     random.seed = (os.urandom(1024))
-    password = ''.join(random.choice(chars) for i in range(16))
+    password = ''.join(random.choice(chars) for i in range(15))
+    if validate(password):
+        return password
+    else:
+        password = generate_password()
     return password
 
 
@@ -52,7 +56,9 @@ def validate(password):
 
 def run():
     password = generate_password()
-    if validate(password):
+    if not password:
+        print('Password generete is not secure, please try again')
+    elif validate(password):
         print('Secure Password')
     else:
         print('Insecure Password')
