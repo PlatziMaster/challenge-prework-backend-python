@@ -24,48 +24,29 @@ def become_type_to_ascii(digit_type):
         return rand_lower + 60
 
 def password_hex_to_ascii(hex_string):
-    print('hex to ascii')
-    # hex_string = "616263"[0:]
-    # hex_string = hex_string[0:]
-    # print(hex_string)
     bytes_object = bytes.fromhex(hex_string)
-    # print(bytes_object)
     ascii_string = bytes_object.decode("ASCII")
-    # print(ascii_string)
-    # print(type(ascii_string))
-    # str_password = str(ascii_string, 'utf-8')
-    # print(type(str_password))
     return ascii_string
 
 
 def generate_password():
     # Start coding here
-    # 1.do
-    #    1.1. Generate password length  (ok)
-    #    1.2. for i = 0 to password_length (ok)
-    #       1.2.1 Generate digit type (ok)
-    #       1.2.2 Generate random digit (ok)
-    #       1.2.3 Generate hex password  (ok)       
-    #       1.2.4 concat to password (ok)
-    #       1.2.5 hex to ascii
-    #    1.3. Verify if password is secure
-    #   while(password === insecure) 
-    # 4. Return password
-
-    hex_password = ''
-    password_length = int_random_number(8, 16)
-    print(password_length)
-
-    for x in range(password_length):
-        digit_type = int_random_number(1, 4) 
-        new_digit = become_type_to_ascii(digit_type)
-        str_digit = str(new_digit)
-        hex_password = hex_password + str_digit 
-
-    password = password_hex_to_ascii(hex_password)
-    print(password)
-    print(type(hex_password))
     
+    while True:
+        hex_password = ''
+        password_length = int_random_number(8, 16)
+
+        for x in range(password_length):
+            digit_type = int_random_number(1, 4) 
+            new_digit = become_type_to_ascii(digit_type)
+            str_digit = str(new_digit)
+            hex_password = hex_password + str_digit 
+
+        password = password_hex_to_ascii(hex_password)
+
+        if validate(password):
+            break
+
     return password
 
 
@@ -104,7 +85,6 @@ def validate(password):
 
 def run():
     password = generate_password()
-    print(password)
     if validate(password):
         print('Secure Password')
     else:
