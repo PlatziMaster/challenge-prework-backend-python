@@ -1,11 +1,34 @@
 # Resolve the problem!!
 import string
+import math
+import random
 
 SYMBOLS = list('!"#$%&\'()*+,-./:;?@[]^_`{|}~')
 
+def int_random_number(min, max):
+    value = random.randint(min, max)
+    return value
 
 def generate_password():
     # Start coding here
+    # 1.do
+    #    1.1. Generate password length  (ok)
+    #    1.2. for i = 0 to password_length (ok)
+    #       1.2.1 Generate digit type
+    #       1.2.2 Generate random digit
+    #       1.2.3 concat to password
+    #    1.3. Verify if password is secure
+    #   while(password === insecure) 
+    # 4. Return password
+
+    password_length = int_random_number(8, 16)
+    print(password_length)
+    for x in range(password_length):
+        type_digit = int_random_number(1, 4) 
+        print(type_digit)
+
+    password = 'PiPe(12)'
+    return password
 
 
 def validate(password):
